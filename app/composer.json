@@ -1,0 +1,14 @@
+{
+    "name": "cheese/cheese",
+    "description": "Lightweight PHP Framework",
+    "type": "project",
+    "license": "The MIT License",
+    "authors": [
+        {
+            "name": "Caleb",
+            "email": "calebchibuike110@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
