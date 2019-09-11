@@ -25,18 +25,27 @@
 
     class Encryption {
         
-        if ( ! method_exists( 'rand_key' )) {
-
         /**
          * Random Key Generator
          * Key Generator using sha-256
-         * @param $Int Integer
-         * @return String
-         * 
+         * @param $int Integer
+         * @return mixed
          */
-crp
+
+            public function rand_key($int = 8) {
+                // generate our alphabets and numerals
+                $str = "1234567890abcdefghijklmopqrstuvwxyzABEDEFGHIJKLMNOPQRSTUVWXYZ";
+                // randomly shuffle the string
+                $str = str_shuffle($str);
+                // hash the string
+                $str = sha1($str);
+                // trim the string to the limit ($int)
+                $str = substr($str, 0, $int);
+                // return the result
+                return $str;
+            }
          
-        }
+        
         
 
     }

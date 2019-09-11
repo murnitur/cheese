@@ -8,7 +8,6 @@
     //Load language files here
     include_once 'loaders/lang/load.php';
 
-    loadHomePage();
     // Auto load class libraries
     spl_autoload_register(function($className){
         require 'libraries/'.$className.'.php';
