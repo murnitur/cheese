@@ -1,16 +1,13 @@
 {
-    "name": "cheese/cheese",
+    "name": "cheese/framework",
     "description": "Lightweight PHP Framework",
     "type": "project",
-    "license": "The MIT License",
-    "authors": [
-        {
-            "name": "Caleb",
-            "email": "calebchibuike110@gmail.com"
-        }
-    ],
+    "license": "MIT",
     "minimum-stability": "dev",
     "require": {
-      "ext-sodium": "*"
+        "php": ">=5.3.7"
+    },
+    "suggest": {
+        "paragonie/random_compat": "Provides better randomness in PHP 5.x"
     }
 }
