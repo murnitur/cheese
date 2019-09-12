@@ -1,4 +1,4 @@
 *.log
 *.idea
-*public/.project
-*public/.buildpath
+*.project
+*.buildpath
