@@ -1,5 +1,6 @@
 <?php
-    require 'config/config.php';
+
+require 'config/config.php';
     require 'form/form.php';
 
     //Load helpers here
