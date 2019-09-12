@@ -57,7 +57,6 @@ class Encryption {
     {
         if( ! empty($string)) {
             try {
-                $this->store = $string;
                 $string = crypt ($string,$salt);
             } catch (Exception $e) {
                 die("Message: " . $e->getMessage ());
@@ -65,6 +64,7 @@ class Encryption {
             return $string;
         }
 
+        
     }
 
 
