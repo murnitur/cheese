@@ -1,4 +1,4 @@
-##Welcome to Cheese
+## Welcome to Cheese
 cheese is a lightweight PHP framework
 follow the instructions below:
 
@@ -14,7 +14,7 @@ head over to [GitHub.com/CheeseFramework](https://github.com/CheeseFramework/che
 ```bash
     git clone https://github.com/CheeseFramework/cheese
 ```
-#####Setting up the .htaccess file
+##### Setting up the .htaccess file
 ````apacheconfig
     <IfModule mod_rewrite.c>
       Options -Multiviews
