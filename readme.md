@@ -38,3 +38,27 @@ Change it to:
       RewriteRule  ^(.+)$ index.php?url=$1 [QSA,L]
     </IfModule>
 ````
+#### Editing the config.php file
+
+Head over to the config directory in there you will find a config.php file open it and edit it.
+Example:
+````php
+ // Database config section
+    define(DB_HOST,'localhost');
+    define(DB_USER,'root');
+    define(DB_PASS,'123456');
+    define(DB_NAME,'cheese');
+
+ // Site config section
+    define(APPROOT,dirname(dirname(__FILE__)));
+    define(URLROOT,'http://localhost/cheese');
+    define(SITENAME,'Welcome to Cheese');
+    define(APPVERSION,'v1.3.0');
+
+ // Core control
+    define(CONTROLLER,'Pages');
+    define(METHOD,'index');
+
+
+````
+
