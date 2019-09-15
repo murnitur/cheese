@@ -3,7 +3,6 @@
     require 'config/config.php';
     require 'form/form.php';
     require 'libraries/Core.php';
-
     //Load helpers here
     include_once 'loaders/helpers/load.php';
 

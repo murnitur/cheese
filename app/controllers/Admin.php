@@ -25,7 +25,11 @@
 /**
 * Class Admin
 * Do not delete this controller.
-* It serves as the default administration panel for users of cheese
+* It serves as the default administration panel for users of cheese.
+* Follow these instructions:
+* 1. Configure your database params in the config.php file
+* 2. Head to the database directory and open the data.sql file to run the schema in your MYSQL database
+* 3. Make sure you do not change any column from the schema (as cheese uses the default columns)
 * Incase of name conflict rename your custom admin.
 */
 
@@ -62,7 +66,7 @@ class Admin extends Controller{
   private $password = "";
 
   public function __construct() {
-
+    $this->adminModel = $this->model('Admin_Model');
   }
 
   /**
@@ -75,7 +79,11 @@ class Admin extends Controller{
   }
 
   public function register(){
+    if(!$this->adminModel->hasUsers()){
+      redirect(CONTROLLER);
+    }
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
+
       $this->view('admin/register');
     }else {
       $data = [
