@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="<?php echo URLROOT;?>/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo URLROOT;?>/css/style.css">
-    <title><?php echo SITENAME; ?></title>
+    <title>Cheese Administration</title>
 </head>
 <body>
 <?php include "nav.php";?>
