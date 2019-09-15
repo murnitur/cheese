@@ -80,21 +80,77 @@ class Admin extends Controller{
 
   public function register(){
     if(!$this->adminModel->hasUsers()){
-      redirect(CONTROLLER);
+      redirect('admin/login');
     }
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
+      $_POST = ch_arr_san($_POST);
+      $data = [
+        'username' => $_POST['username'],
+        'email' => $_POST['email'],
+        'pwd' => $_POST['password'],
+        'r_pwd' => $_POST['confirm_password'],
+        'user_err' => '',
+        'email_err' => '',
+        'pwd_err' =>'',
+        'r_pwd_err' => ''
+      ];
+      // Validations
+      if(!required($data['username'])) {
+        $data['user_err'] = 'Username is needed';
+      }
 
-      $this->view('admin/register');
+
+      if(!required($data['email'])) {
+        $data['email_err'] = 'Email is needed';
+      }
+
+      elseif(!ch_email_val($data['email'])) {
+        $data['email_err'] = "Email is Invalid";
+      }
+
+      if(!required($data['pwd'])) {
+        $data['pwd_err'] = 'Password is required';
+      }
+
+      if(!required($data['r_pwd'])) {
+        $data['r_pwd_err'] = 'Please confirm your password';
+      }
+
+      elseif(!compare($data['pwd'],$data['r_pwd'])){
+        $data['r_pwd_err'] = 'Passwords do not match!';
+      }
+
+      if(empty($data['user_err']) && empty($data['email_err']) && empty($data['pwd_err']) && empty($data['r_pwd_err'])){
+        die("SUCCESS");
+      }
+
+
+      $this->view('admin/register',$data);
     }else {
       $data = [
         'username' => '',
         'email' => '',
+        'email_err' => '',
         'pwd' => '',
         'r_pwd' => '',
         'pwd_err' => '',
         'r_pwd_err' => ''
       ];
       $this->view('admin/register',$data);
+    }
+  }
+  public function login(){
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+      $this->view('admin/login');
+    }else {
+      $data = [
+        'email' => '',
+        'email_err' => '',
+        'pwd' => '',
+        'pwd_err' => ''
+      ];
+      $this->view('admin/login',$data);
     }
   }
 }
