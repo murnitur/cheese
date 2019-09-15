@@ -75,6 +75,9 @@ class Admin extends Controller{
   */
 
   public function index(){
+    if(!$this->isAuth()){
+      redirect('admin/register');
+    }
     $this->view('admin/index');
   }
 
@@ -121,7 +124,13 @@ class Admin extends Controller{
       }
 
       if(empty($data['user_err']) && empty($data['email_err']) && empty($data['pwd_err']) && empty($data['r_pwd_err'])){
-        die("SUCCESS");
+        $data['pwd'] = ch_pwd_hash($data['pwd']);
+        if($this->adminModel->register($data)){
+          flash('register_success','You are successfully registered! Now login');
+          redirect('admin/login');
+        }else{
+          die("Something went wrong");
+        }
       }
 
 
@@ -139,10 +148,37 @@ class Admin extends Controller{
       $this->view('admin/register',$data);
     }
   }
+
   public function login(){
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
+      $_POST = ch_arr_san($_POST);
+      $data = [
+        'email' => $_POST['email'],
+        'pwd' => $_POST['password'],
+        'email_err' => '',
+        'pwd_err' =>''
+      ];
+      // Validations
 
-      $this->view('admin/login');
+      if(!required($data['email'])) {
+        $data['email_err'] = 'Email is needed';
+      }elseif(!$this->adminModel->getUserByEmail($data['email'])){
+        $data['email_err'] = 'User not found';
+      }
+
+      if(!required($data['pwd'])) {
+        $data['pwd_err'] = 'Password is required';
+      }
+
+      if(empty($data['email_err']) && empty($data['pwd_err'])){
+        $admin = $this->adminModel->login($data['email'], $data['pwd']);
+        if($admin){
+          $this->setSession($admin);
+        }else{
+          $data['pwd_err'] = 'Password is wrong';
+        }
+      }
+      $this->view('admin/login',$data);
     }else {
       $data = [
         'email' => '',
@@ -151,6 +187,27 @@ class Admin extends Controller{
         'pwd_err' => ''
       ];
       $this->view('admin/login',$data);
+    }
+  }
+
+  public function setSession($admin){
+    $_SESSION['cheese_admin'] = $admin->name;
+    $_SESSION['cheese_admin_id'] = $admin->id;
+    redirect('admin');
+  }
+
+  public function logout(){
+    unset($_SESSION['cheese_admin']);
+    unset($_SESSION['cheese_admin_id']);
+    session_destroy();
+    redirect('admin/login');
+  }
+
+  public function isAuth(){
+    if(isset($_SESSION['cheese_admin']) || isset($_SESSION['cheese_admin_id'])){
+      return true;
+    } else{
+      return false;
     }
   }
 }

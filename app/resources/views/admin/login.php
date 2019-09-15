@@ -1,6 +1,7 @@
 <?php include APPROOT . '/resources/views/incl/header.blade.php'; ?>
 <div class="row mt-4 mb-4">
   <div class="col-md-6 mx-auto">
+    <?php flash('register_success'); ?>
     <h3 class="text-center">Welcome to Cheese Admin</h3>
     <p class="text-center">Login Now!</p>
     <form action="<?php echo URLROOT;?>/admin/login" method="post">
