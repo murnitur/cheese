@@ -35,6 +35,8 @@
 
 class Admin extends Controller{
 
+    private $links = ['users'];
+    
   public function __construct() {
     $this->adminModel = $this->model('Admin_Model');
   }
@@ -45,18 +47,29 @@ class Admin extends Controller{
   */
 
   public function index(){
+    //if user is not logged in redirect to login page
+      
     if(!$this->isAuth()){
       redirect('admin/register');
     }
-
+    
     $this->view('admin/index');
   }
   
   public function add($request){
-      
+      //check if there is a request parameter
       if($request === ""){
           redirect("admin");
-      }else{
+      }
+      
+      //check if requested link is in the links array
+     
+      elseif (!in_array($request, $this->links)) {
+          redirect("admin");
+       }
+       
+       //run this if all went well
+      else{
           $data = [
                 /* @var $request type */
                 'request' => $request
