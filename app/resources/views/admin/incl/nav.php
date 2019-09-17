@@ -14,7 +14,10 @@
 
             <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link">Welcome <?php echo $_SESSION['cheese_admin'];?></a>
+                        <a class="nav-link">Welcome ADMIN</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo URLROOT;?>">Visit Site</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo URLROOT; ?>/admin/logout">Logout</a>

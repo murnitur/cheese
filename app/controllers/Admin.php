@@ -35,36 +35,6 @@
 
 class Admin extends Controller{
 
-  /**
-  * Username
-  * @var string
-  */
-  private $username = "";
-
-  /**
-  * Firstname
-  * @var string
-  */
-  private $firstname = "";
-
-  /**
-  * Lastname
-  * @var string
-  */
-  private $lastname = "";
-
-  /**
-  * Email
-  * @var string
-  */
-  private $email = "";
-
-  /**
-  * Password
-  * @var mixed
-  */
-  private $password = "";
-
   public function __construct() {
     $this->adminModel = $this->model('Admin_Model');
   }
@@ -78,6 +48,7 @@ class Admin extends Controller{
     if(!$this->isAuth()){
       redirect('admin/register');
     }
+
     $this->view('admin/index');
   }
 
