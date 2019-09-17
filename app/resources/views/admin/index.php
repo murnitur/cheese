@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col-md-4">
     <h4>Site Administration</h4>
-    <a href="<?php echo URLROOT;?>/admin/add">Add Users <i class="fa fa-users"></i></a>
+    <a href="<?php echo URLROOT;?>/admin/add/users">Add Users <i class="fa fa-users"></i></a>
   </div>
   <div class="col-md-6">
     <h4>Recent Activities</h4>

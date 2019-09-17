@@ -51,6 +51,20 @@ class Admin extends Controller{
 
     $this->view('admin/index');
   }
+  
+  public function add($request){
+      
+      if($request === ""){
+          redirect("admin");
+      }else{
+          $data = [
+                /* @var $request type */
+                'request' => $request
+          ];
+          $this->view("admin/add", $data);
+      }
+      
+  }
 
   public function register(){
     if(!$this->adminModel->hasUsers()){
