@@ -17,7 +17,7 @@
                         <a class="nav-link">Welcome ADMIN</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo URLROOT;?>">Visit Site</a>
+                        <a class="nav-link" href="<?php echo URLROOT;?>" target="_blank">Visit Site</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo URLROOT; ?>/admin/logout">Logout</a>
