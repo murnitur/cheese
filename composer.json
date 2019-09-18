@@ -1,16 +1,13 @@
 {
     "name": "cheese-framework/cheese",
-    "description": "Cheese is a PHP lightweight framework",
+    "description": "Cheese is a lightweight PHP framework",
     "type": "project",
-    "require": {
-        "php": ">=5.3.7"
-
-    },
     "license": "MIT",
     "authors": [
         {
-            "name": "Caleb",
-            "email": "calebchibuike110@gmail.com"
+            "name": "Caleb Okpara",
+            "email": "cletusokoys@gmail.com"
         }
-    ]
+    ],
+    "require": {}
 }
