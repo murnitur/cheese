@@ -1,5 +1,5 @@
 {
-    "name": "CheeseFramework/cheese",
+    "name": "cheese-framework/cheese",
     "description": "Cheese is a PHP lightweight framework",
     "type": "project",
     "require": {
