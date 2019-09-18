@@ -29,11 +29,11 @@
  * Creates URL & loads controller
  * URL FORMAT /controller/method/params
  */
-
+namespace app;
 
 class Core
 {
-    protected $currentController = CONTROLLER;
+    protected $currentController = \CONTROLLER;
     protected $currentMethod = METHOD;
     protected $params = [];
 
@@ -42,7 +42,7 @@ class Core
     {
         $url = $this->getUrl();
         //Look in controller for first value
-        if(file_exists('../app/controllers/'. ucwords($url[0]). '.php')) {
+        if(\file_exists('../app/controllers/'. \ucwords($url[0]). '.php')) {
             //if exists set as currentController
             $this->currentController = ucwords($url[0]);
             /*unset url[0]*/
@@ -63,11 +63,11 @@ class Core
             }
         }
         // Get params
-        $this->params = $url ? array_values($url) : [];
+        $this->params = $url ? array_values($url) : [""];
         // Call a callback with array params
-        
+
             call_user_func_array([$this->currentController, $this->currentMethod], $this->params);
-        
+
     }
 
     public function getUrl() {

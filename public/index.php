@@ -1,6 +1,8 @@
 <?php
-    require_once '../app/bootstrap.php';
+
+use app as cheese;
+
+require_once '../app/bootstrap.php';
     // Instantiation of Core class
-    $init = new Core;
-
-
+    $app = new cheese\Core;
+    return $app;
